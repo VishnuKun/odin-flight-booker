@@ -59,3 +59,6 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
+
+gem "devise"
+gem "letter_opener_web" # To easily see the emails devise sends in development
