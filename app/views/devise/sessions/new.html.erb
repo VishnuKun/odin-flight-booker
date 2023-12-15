@@ -1,28 +1,48 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <h2>Log in</h2>
+  <%= content_for(:auth_header) do %>
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Log in</h2>
+    </div>
+  <% end %>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
+    <div class="field mb-6">
       <%= f.label :email, class: label_class %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_class %>
     </div>
 
-    <div class="field">
+    <div class="field mb-6">
       <%= f.label :password, class: label_class  %><br />
       <%= f.password_field :password, autocomplete: "current-password", class: input_class %>
     </div>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
+    <div class="flex items-center justify-between mb-6">
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+            <%= f.label :remember_me, class: "font-bold text-sm text-gray-700" %>
+          </div>
+        <% end %>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <div class="text-sm">
+            <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-semibold text-indigo-600 hover:text-indigo-500" %><br />
+          </div>
+        <% end %>        
+        
+    </div>
+
 
     <div class="actions">
-      <%= f.submit "Log in", class: input_class %>
+      <%= f.submit "Log in", class: form_button_class %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <p class="mt-10 text-center text-sm text-gray-500">
+    Not a member yet?
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "font-semibold leading-6 text-indigo-600 hover:text-indigo-500" %><br />
+    <% end %>   
+  </p>
+
+  <%# <%= render "devise/shared/links" %> 
 </div>
