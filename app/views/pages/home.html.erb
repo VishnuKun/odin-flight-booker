@@ -1,21 +1,19 @@
 <% content_for(:page_title, "Pages#home") %>
 <p>Welcome current user : <%= current_user.first_name %></p>
 <div>
-    <%= form_tag(flights_url, method: "get") do %>
-        <p>Departure Airport</p>
+    <%= form_tag(pages_home_path, method: "get", remote: true) do %>
+        <%= label(:flight, :departure_airport_id, class: label_class ) %>
         <%= collection_select(:flight, :departure_airport_id, Airport.all, :id, :code, prompt: true) %>
-        <p>Arrival Airport</p>
+        <%= label(:flight, :arrival_airport_id, class: label_class ) %>
         <%= collection_select(:flight, :arrival_airport_id, Airport.all, :id, :code, prompt: true) %>
-        <p>Number of Passengers</p>
+        <%= label(:flight, :passengers, class: label_class ) %>
         <%= select_tag(:passengers, options_for_select(1..4)) %>
-        <p>Date</p>
+        <%= label(:flight, :date, class: label_class ) %>
         <%= collection_select(:flight, :start_datetime, Flight.all, :id, :start_datetime, prompt: true) %>
-        <%= text_field_tag(:search) %>
-        <%= submit_tag("Search") %>
+        <%# <%= text_field_tag(:search) %>
+        <div><%= submit_tag("Search", class: form_button_class) %></div>
     <% end %>
-</div>
-<h1>Flights</h1>
 
-<% @flights.each do |flight| %>
-    <p><%= flight %></p>
-<% end %>
+    <h1 class="font-bold" id='flight-search-results'></h1>
+</div>
+
