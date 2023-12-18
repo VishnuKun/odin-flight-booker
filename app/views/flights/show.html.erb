@@ -5,6 +5,15 @@
     <% end %>
 
     <%= render @flight %>
+    <h1>Flight Details</h1>
+
+    <div>
+    <p>Departure Airport: <%= @flight.departure_airport.code %></p>
+    <p>Arrival Airport: <%= @flight.arrival_airport.code %></p>
+    <p>Start Date and Time: <%= @flight.start_datetime %></p>
+    <p>Duration: <%= @flight.flight_duration %> minutes</p>
+    </div>
+
 
     <%= link_to "Edit this flight", edit_flight_path(@flight), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

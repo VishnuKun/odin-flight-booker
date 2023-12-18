@@ -4,7 +4,10 @@ class FlightsController < ApplicationController
   # GET /flights
   def index
     @flights = Flight.all
-  end
+    @flights = @flights.where(departure_airport_id: params[:flight][:departure_airport_id]) if params[:flight] && params[:flight][:departure_airport_id].present?
+    @flights = @flights.where(arrival_airport_id: params[:flight][:arrival_airport_id]) if params[:flight] && params[:flight][:arrival_airport_id].present?
+   end
+
 
   # GET /flights/1
   def show
