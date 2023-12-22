@@ -2,6 +2,9 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+
+  <p>Welcome current user : <%= current_user.first_name %></p>
+
   <div class="flex items-top justify-left p-4">
     <%= search_form_for @q do |f| %>
       <div class="flex gap-2 mb-4">
@@ -14,19 +17,24 @@
       </div>
       <div class="flex gap-2 mb-4">
         <%= f.label(:passengers_eq, class: label_class ) %> :
-        <%= f.select(:passengers, options_for_select(1..4))  %>
+        <%= f.select(:passengers_eq, options_for_select(1..4))%>
+
       </div>
       <div class="flex gap-2 mb-4">
         <%= f.label(:start_datetime_eq, class: label_class ) %> :
         <%= f.collection_select(:start_datetime_eq, Flight.all, :id, :start_datetime, prompt: true) %>
       </div>
-      <div><%= f.submit("Search", class: form_button_class) %></div>
+      <div class="mb-2"><%= f.submit("Search", class: form_button_class) %></div>
+      <%= link_to "Clear Filters", flights_path, class: form_button_class %>
     <% end %>
   </div>
 
+  <div>
+  </div>
+
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Flights</h1>
-    <%= link_to "New flight", new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl mb-3">Flights</h1>
+    <%# <%= link_to "New flight", new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> 
   </div>
 
   <div id="flights" class="min-w-full">
