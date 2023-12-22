@@ -3,7 +3,8 @@ class FlightsController < ApplicationController
 
   # GET /flights
   def index
-    @flights = Flight.all
+    @q = Flight.ransack(params[:q])
+    @flights = @q.result
    end
 
 

@@ -1,33 +1,4 @@
 <% content_for(:page_title, "Pages#home") %>
 <p>Welcome current user : <%= current_user.first_name %></p>
-<div class="flex items-top justify-left p-4">
-    <%= form_tag(flights_path, method: "get", remote: true, class: "shadow-xl p-5") do %>
-        <div class="flex gap-2 mb-4">
-            <%= label(:flight, :departure_airport_id, class: label_class ) %> :
-            <%= collection_select(:flight, :departure_airport_id, Airport.all, :id, :code, prompt: true) %>
-        </div>
-        <div class="flex gap-2 mb-4">
-            <%= label(:flight, :arrival_airport_id, class: label_class ) %> :
-            <%= collection_select(:flight, :arrival_airport_id, Airport.all, :id, :code, prompt: true) %>
-        </div>
-        <div class="flex gap-2 mb-4">
-            <%= label(:flight, :passengers, class: label_class ) %> :
-            <%= select_tag(:passengers, options_for_select(1..4)) %> 
-        </div>
-        <div class="flex gap-2 mb-4">
-            <%= label(:flight, :date, class: label_class ) %> :
-            <%= collection_select(:flight, :start_datetime, Flight.all, :id, :start_datetime, prompt: true) %>
-        </div>
-        <%# <%= text_field_tag(:search) %>
-        <div><%= submit_tag("Search", class: form_button_class) %></div>
-    <% end %>
 
-    <div class="font-bold m-5 " id='search-results-box'>
-        <h1 class="mb-3">
-            Search Results
-        </h1>
-        <div class="ring-2 ring-indigo-600 shadow-custom-color p-4 rounded-xl ">
-        </div>
-    </div>
-</div>
-
+<%= link_to "Search Flights", flights_path, class: form_button_class %>

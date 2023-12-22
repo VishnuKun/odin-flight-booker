@@ -2,6 +2,27 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+  <div class="flex items-top justify-left p-4">
+    <%= search_form_for @q do |f| %>
+      <div class="flex gap-2 mb-4">
+        <%= f.label(:departure_airport_id_eq, class: label_class ) %> :
+        <%= f.collection_select(:departure_airport_id_eq, Airport.all, :id, :code, prompt: true) %>
+      </div>
+      <div class="flex gap-2 mb-4">
+        <%= f.label(:arrival_airport_id_eq, class: label_class ) %> :
+        <%= f.collection_select(:arrival_airport_id_eq, Airport.all, :id, :code, prompt: true) %>
+      </div>
+      <div class="flex gap-2 mb-4">
+        <%= f.label(:passengers_eq, class: label_class ) %> :
+        <%= f.select(:passengers, options_for_select(1..4))  %>
+      </div>
+      <div class="flex gap-2 mb-4">
+        <%= f.label(:start_datetime_eq, class: label_class ) %> :
+        <%= f.collection_select(:start_datetime_eq, Flight.all, :id, :start_datetime, prompt: true) %>
+      </div>
+      <div><%= f.submit("Search", class: form_button_class) %></div>
+    <% end %>
+  </div>
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Flights</h1>

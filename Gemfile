@@ -65,3 +65,5 @@ gem "letter_opener_web" # To easily see the emails devise sends in development
 
 gem "tailwindcss-rails", "~> 2.0"
 gem 'cssbundling-rails'
+
+gem "ransack", "~> 4.1"
