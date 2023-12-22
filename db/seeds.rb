@@ -23,38 +23,44 @@ flight1 = Flight.create(
   departure_airport_id: airport1.id,
   arrival_airport_id: airport2.id,
   start_datetime: DateTime.new(2023, 12, 16, 9, 0, 0),
-  flight_duration: 2
-)
+  flight_duration: 2,
+  passengers:1
+  )
 
-flight2 = Flight.create(
+  flight2 = Flight.create(
   departure_airport_id: airport8.id,
   arrival_airport_id: airport6.id,
   start_datetime: DateTime.new(2023, 12, 16, 15, 0, 0),
-  flight_duration: 2
+  flight_duration: 2,
+  passengers:1
 )
 flight3 = Flight.create(
   departure_airport_id: airport4.id,
   arrival_airport_id: airport7.id,
   start_datetime: DateTime.new(2023, 12, 16, 9, 0, 0),
-  flight_duration: 2
+  flight_duration: 2,
+  passengers:1
 )
 
 flight4 = Flight.create(
   departure_airport_id: airport5.id,
   arrival_airport_id: airport3.id,
   start_datetime: DateTime.new(2023, 12, 16, 15, 0, 0),
-  flight_duration: 2
+  flight_duration: 2,
+  passengers:1
 )
 flight5 = Flight.create(
-  departure_airport_id: airport7.id,
-  arrival_airport_id: airport3.id,
+  departure_airport_id: airport8.id,
+  arrival_airport_id: airport2.id,
   start_datetime: DateTime.new(2023, 12, 16, 9, 0, 0),
-  flight_duration: 2
+  flight_duration: 2,
+  passengers:1
 )
 
 flight6 = Flight.create(
   departure_airport_id: airport2.id,
   arrival_airport_id: airport8.id,
   start_datetime: DateTime.new(2023, 12, 16, 15, 0, 0),
-  flight_duration: 2
+  flight_duration: 2,
+  passengers:1
 )
