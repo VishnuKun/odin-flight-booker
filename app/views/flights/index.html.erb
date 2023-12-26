@@ -16,8 +16,8 @@
         <%= f.collection_select(:arrival_airport_id_eq, Airport.all, :id, :code, prompt: true) %>
       </div>
       <div class="flex gap-2 mb-4">
-        <%= f.label(:passengers_eq, class: label_class ) %> :
-        <%= f.select(:passengers_eq, options_for_select(1..4))%>
+        <%= f.label(:passengers, class: label_class ) %> :
+        <%= f.select(:passengers, options_for_select(1..4)) %>
 
       </div>
       <div class="flex gap-2 mb-4">
@@ -34,7 +34,11 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl mb-3">Flights</h1>
-    <%# <%= link_to "New flight", new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> 
+    <%# <div> 
+      <%= form_with url: new_booking_path, method: :post do |f| %>
+        <%# <%= f.submit "Book Selected Flight", class: form_button_class %> 
+      <%# <% end %> 
+    <%# </div> %> 
   </div>
 
   <div id="flights" class="min-w-full">
